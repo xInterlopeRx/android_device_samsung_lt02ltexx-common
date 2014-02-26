@@ -1,4 +1,6 @@
 #!/bin/sh
+export DEVICE=lt02ltexx
+export VENDOR=samsung
 
 set -e
 
@@ -34,7 +36,7 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   fi
 done
 
-for FILE in `egrep -v '(^#|^$)' ../melius-common/proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../lt02ltexx-common/proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   DIR=`dirname $FILE`
   if [ ! -d $BASE/$DIR ]; then
@@ -47,9 +49,9 @@ for FILE in `egrep -v '(^#|^$)' ../melius-common/proprietary-files.txt`; do
   fi
 done
 
-BASE=../../../vendor/$VENDOR/melius-common/proprietary
+BASE=../../../vendor/$VENDOR/lt02ltexx-common/proprietary
 rm -rf $BASE/*
-for FILE in `egrep -v '(^#|^$)' ../melius-common/common-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../lt02ltexx-common/common-proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   DIR=`dirname $FILE`
   if [ ! -d $BASE/$DIR ]; then
@@ -62,4 +64,4 @@ for FILE in `egrep -v '(^#|^$)' ../melius-common/common-proprietary-files.txt`; 
   fi
 done
 
-./../melius-common/setup-makefiles.sh
+./../lt02ltexx-common/setup-makefiles.sh

@@ -7,10 +7,6 @@ bin/hci_qcomm_init
 bin/mpdecision
 bin/thermald
 
-# Bluetooth firmware
-vendor/firmware/bcm2079xB4_firmware.ncd
-vendor/firmware/bcm2079xB4_pre_firmware.ncd
-
 # Audio
 lib/libacdbloader.so
 lib/libaudcal.so
@@ -52,8 +48,6 @@ lib/libcnefeatureconfig.so
 
 # Radio
 bin/ds_fmc_appd
-bin/netmgrd
-bin/sec-ril
 bin/qmuxd
 bin/rild
 bin/rmt_storage
@@ -61,12 +55,9 @@ lib/libatparser.so
 lib/libcordon.so
 lib/libdiag.so
 lib/libdsutils.so
-lib/libdsi_netctrl.so
 lib/libfactoryutil.so
 lib/libnetmgr.so
 lib/libomission_avoidance.so
-lib/libqdi.so
-lib/libqdp.so
 lib/libreference-ril.so
 lib/libril-qcril-hook-oem.so
 lib/libsecril-client.so
@@ -88,6 +79,7 @@ lib/libloc_api_v02.so
 
 # Sensors
 bin/geomagneticd
+bin/orientationd
 lib/hw/sensors.msm8960.so
 
 # Camera
@@ -117,6 +109,7 @@ lib/libchromatix_s5k6a3yx_vt_hd.so
 lib/libchromatix_s5k6a3yx_vt.so
 lib/libgemini.so
 lib/libimage-jpeg-enc-omx-comp.so
+lib/libimage-jpeg-dec-omx-comp.so
 lib/libimage-omx-common.so
 lib/libmercury.so
 lib/libmmcamera_faceproc.so
@@ -147,6 +140,6 @@ lib/libdrmfs.so
 lib/libdrmtime.so
 lib/libhdcp2.so
 lib/libQSEEComAPI.so
-lib/libWVStreamControlAPI_L1.so
+lib/libWVStreamControlAPI_L3.so
 lib/libtzplayready.so
 lib/libwvm.so

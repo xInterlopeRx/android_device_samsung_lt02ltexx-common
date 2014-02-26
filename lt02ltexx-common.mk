@@ -15,10 +15,10 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/melius-common/melius-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/lt02ltexx-common/lt02ltexx-common-vendor.mk)
 
 # Common Overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/melius-common/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/lt02ltexx-common/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
@@ -27,8 +27,8 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_BOOT_JARS += qcmediaplayer
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
+TARGET_SCREEN_HEIGHT := 1024
+TARGET_SCREEN_WIDTH := 600
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -134,7 +134,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.dont_use_dsd=true \
     persist.radio.apm_sim_not_pwdn=1 \
-    ro.sf.lcd_density=240 \
+    ro.sf.lcd_density=160 \
     ro.ril.transmitpower=true \
     ro.warmboot.capability=1 \
     ro.qualcomm.cabl=0 \
