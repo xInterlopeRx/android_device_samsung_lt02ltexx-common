@@ -24,57 +24,44 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+on init
+    # For Absolute Persistence Partition
+    mkdir /persdata 0755 system system
+    mkdir /persdata/absolute 0750 system system
+
+    wait /dev/block/mmcblk0p20
+    mount ext4 /dev/block/mmcblk0p20 /persdata/absolute nosuid nodev barrier=1
+    chown system system /persdata
+    chmod 0755 /persdata
+    chown system system /persdata/absolute
+    chmod 0750 /persdata/absolute
+
 on boot
     chown system system /sys/class/leds/button-backlight/brightness
 
-# Sensor
-    write /sys/class/input/input5/static_matrix "10000 0 0 0 10000 0 0 0 10000"
-    write /sys/class/input/input6/static_matrix "10000 0 0 0 10000 0 0 0 10000"
-    write /sys/class/input/input7/static_matrix "10000 0 0 0 10000 0 0 0 10000"
+    # Permissions for bluetooth
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown bluetooth net_bt_stack /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
-on property:ro.revision=7
-    chmod 0664 /sys/devices/platform/sec-thermistor/temperature
-    chmod 0664 /sys/class/power_supply/battery/siop_level
-    chmod 0664 /sys/class/power_supply/battery/test_charge_current
-    chown radio system /sys/devices/platform/sec-thermistor/temperature
-    chown radio system /sys/class/power_supply/battery/siop_level
-    chown radio system /sys/class/power_supply/battery/test_charge_current
-    
-on property:ro.revision=8
-    chmod 0664 /sys/devices/platform/sec-thermistor/temperature
-    chmod 0664 /sys/class/power_supply/battery/siop_level
-    chmod 0664 /sys/class/power_supply/battery/test_charge_current
-    chown radio system /sys/devices/platform/sec-thermistor/temperature
-    chown radio system /sys/class/power_supply/battery/siop_level
-    chown radio system /sys/class/power_supply/battery/test_charge_current
-    
-on property:ro.revision=9
-    chmod 0664 /sys/devices/platform/sec-thermistor/temperature
-    chmod 0664 /sys/class/power_supply/battery/siop_level
-    chmod 0664 /sys/class/power_supply/battery/test_charge_current
-    chown radio system /sys/devices/platform/sec-thermistor/temperature
-    chown radio system /sys/class/power_supply/battery/siop_level
-    chown radio system /sys/class/power_supply/battery/test_charge_current    
+    # Sensor - soft iron
+    write /sys/class/input/input5/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
+    write /sys/class/input/input6/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
+    write /sys/class/input/input7/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
 
-on property:ro.revision=10
-    chmod 0664 /sys/devices/platform/sec-thermistor/temperature
-    chmod 0664 /sys/class/power_supply/battery/siop_level
-    chmod 0664 /sys/class/power_supply/battery/test_charge_current
-    chown radio system /sys/devices/platform/sec-thermistor/temperature
-    chown radio system /sys/class/power_supply/battery/siop_level
-    chown radio system /sys/class/power_supply/battery/test_charge_current    
-
-on property:ro.revision=11
-    chmod 0664 /sys/devices/platform/sec-thermistor/temperature
-    chmod 0664 /sys/class/power_supply/battery/siop_level
-    chmod 0664 /sys/class/power_supply/battery/test_charge_current
-    chown radio system /sys/devices/platform/sec-thermistor/temperature
-    chown radio system /sys/class/power_supply/battery/siop_level
-    chown radio system /sys/class/power_supply/battery/test_charge_current    
+    # Enable ellipsoid for dynamic compensation
+    write /sys/class/input/input3/ellipsoid_mode 1
+    write /sys/class/input/input4/ellipsoid_mode 1
+    write /sys/class/input/input5/ellipsoid_mode 1
 
     # Define TCP buffer sizes for various networks
     # ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
     setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
     setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
     setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608

@@ -1,6 +1,4 @@
 #!/bin/sh
-export DEVICE=lt02ltexx
-export VENDOR=samsung
 
 set -e
 

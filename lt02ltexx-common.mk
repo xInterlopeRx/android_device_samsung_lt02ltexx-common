@@ -21,8 +21,8 @@ $(call inherit-product-if-exists, vendor/samsung/lt02ltexx-common/lt02ltexx-comm
 DEVICE_PACKAGE_OVERLAYS += device/samsung/lt02ltexx-common/overlay
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 PRODUCT_BOOT_JARS += qcmediaplayer
 
@@ -33,6 +33,7 @@ TARGET_SCREEN_WIDTH := 600
 # Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
     $(LOCAL_PATH)/audio/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar
 
 # Media Profile
@@ -98,6 +99,13 @@ PRODUCT_PACKAGES += \
     gps.conf \
     sap.conf
 
+# FM radio
+PRODUCT_PACKAGES += \
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2 \
+    FMRecord
+
 # Torch
 PRODUCT_PACKAGES += Torch
 
@@ -119,7 +127,7 @@ PRODUCT_COPY_FILES += \
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
+    persist.sys.usb.config=mtp,adb
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -132,19 +140,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10 \
     persist.radio.add_power_save=1 \
-    persist.radio.dont_use_dsd=true \
+	persist.radio.no_wait_for_card=1 \
     persist.radio.apm_sim_not_pwdn=1 \
     ro.sf.lcd_density=160 \
     ro.ril.transmitpower=true \
     ro.warmboot.capability=1 \
     ro.qualcomm.cabl=0 \
     ro.opengles.version=196608 \
-    hwui.use_gpu_pixel_buffers=true \
-    af.resampler.quality=255 \
+    af.resampler.quality=4 \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
-    ro.fm.transmitter=false \
     ro.use_data_netmgrd=true \
     lpa.decode=true \
     lpa.use-stagefright=true \
@@ -165,7 +171,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.umsdirtyratio=50 \
     ro.cwm.enable_key_repeat=true \
     persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0
+    persist.sys.wfd.virtual=0 \
+    mm.enable.smoothstreaming=true \
+	telephony.lteOnCdmaDevice=1 \
+    persist.timed.enable=true
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -175,4 +184,4 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 $(call inherit-product, device/samsung/msm8930-common/msm8930.mk)
 
 # call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)

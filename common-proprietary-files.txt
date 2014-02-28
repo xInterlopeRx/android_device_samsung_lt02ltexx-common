@@ -1,6 +1,6 @@
 # Bins
 bin/btnvtool
-bin/fm_qsoc_patches	
+bin/fm_qsoc_patches
 bin/hci_qcomm_init
 
 # Thermal
@@ -20,8 +20,8 @@ lib/libmmparser.so
 lib/libmmosal.so
 
 # Adreno GPU
-etc/firmware/a300_pfp.fw	
-etc/firmware/a300_pm4.fw	
+etc/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw
 etc/firmware/vidc_1080p.fw
 lib/egl/eglsubAndroid.so
 lib/egl/libEGL_adreno200.so
@@ -43,6 +43,8 @@ etc/firmware/vidc_1080p.fw
 # Graphics
 lib/libI420colorconvert.so
 lib/libmm-color-convertor.so
+lib/libmm-abl.so
+lib/libmm-abl-oem.so
 lib/libNimsWrap.so
 lib/libcnefeatureconfig.so
 
@@ -54,6 +56,7 @@ bin/rmt_storage
 lib/libatparser.so
 lib/libcordon.so
 lib/libdiag.so
+lib/libdss.so
 lib/libdsutils.so
 lib/libfactoryutil.so
 lib/libnetmgr.so
@@ -61,7 +64,7 @@ lib/libomission_avoidance.so
 lib/libreference-ril.so
 lib/libril-qcril-hook-oem.so
 lib/libsecril-client.so
-lib/libtime_genoff.so
+lib/libsec-ril.so
 vendor/lib/libidl.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqmi.so
@@ -72,10 +75,13 @@ vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
+# Time services
+bin/time_daemon
+lib/libtime_genoff.so
 
 # GPS
-lib/libgeofence.so
 lib/libloc_api_v02.so
+lib/libgeofence.so
 
 # Sensors
 bin/geomagneticd
@@ -92,24 +98,24 @@ lib/libchromatix_imx175_antishake.so
 lib/libchromatix_imx175_default_video.so
 lib/libchromatix_imx175_lls.so
 lib/libchromatix_imx175_preview.so
+lib/libchromatix_imx175_zsl.so
 lib/libchromatix_imx175_zsl_drama.so
 lib/libchromatix_imx175_zsl_panorama.so
-lib/libchromatix_imx175_zsl.so
 lib/libchromatix_s5k3h5xa_antishake.so
 lib/libchromatix_s5k3h5xa_default_video.so
 lib/libchromatix_s5k3h5xa_lls.so
 lib/libchromatix_s5k3h5xa_preview.so
+lib/libchromatix_s5k3h5xa_zsl.so
 lib/libchromatix_s5k3h5xa_zsl_drama.so
 lib/libchromatix_s5k3h5xa_zsl_panorama.so
-lib/libchromatix_s5k3h5xa_zsl.so
 lib/libchromatix_s5k6a3yx_default_video.so
 lib/libchromatix_s5k6a3yx_preview.so
 lib/libchromatix_s5k6a3yx_smart_stay.so
-lib/libchromatix_s5k6a3yx_vt_hd.so
 lib/libchromatix_s5k6a3yx_vt.so
+lib/libchromatix_s5k6a3yx_vt_hd.so
 lib/libgemini.so
-lib/libimage-jpeg-enc-omx-comp.so
 lib/libimage-jpeg-dec-omx-comp.so
+lib/libimage-jpeg-enc-omx-comp.so
 lib/libimage-omx-common.so
 lib/libmercury.so
 lib/libmmcamera_faceproc.so

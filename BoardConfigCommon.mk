@@ -29,7 +29,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/lt02ltexx-common/include
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Kernel
-BOARD_KERNEL_CMDLINE         := console=null androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31
+BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31 zcache
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
@@ -76,6 +76,20 @@ BOARD_HAVE_DOCK_USBAUDIO := true
 
 # Allow suspend in charge mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
+
+# Enable QCOM FM feature
+QCOM_FM_ENABLED := true
+BOARD_USES_SEPERATED_FM := true
+
+# Camera
+TARGET_NEED_CAMERA_ZSL := true
+TARGET_NEED_FFC_PICTURE_FIXUP := true
+
+# We have new GPS
+BOARD_HAVE_NEW_QC_GPS := true
+
+# Time services
+BOARD_USES_QC_TIME_SERVICES := true
 
 # TWRP specific build flags
 BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_15x24.h\"
