@@ -21,7 +21,7 @@ $(call inherit-product-if-exists, vendor/samsung/lt02ltexx-common/lt02ltexx-comm
 DEVICE_PACKAGE_OVERLAYS += device/samsung/lt02ltexx-common/overlay
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 PRODUCT_BOOT_JARS += qcmediaplayer
@@ -147,7 +147,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.warmboot.capability=1 \
     ro.qualcomm.cabl=0 \
     ro.opengles.version=196608 \
-    af.resampler.quality=4 \
+    hwui.use_gpu_pixel_buffers=true \
+    af.resampler.quality=255 \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
@@ -170,10 +171,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.umsdirtyratio=50 \
     ro.cwm.enable_key_repeat=true \
     persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0 \
-    mm.enable.smoothstreaming=true \
-	telephony.lteOnCdmaDevice=1 \
-    persist.timed.enable=true
+    persist.sys.wfd.virtual=0
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -183,4 +181,4 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 $(call inherit-product, device/samsung/msm8930-common/msm8930.mk)
 
 # call dalvik heap config
-$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
