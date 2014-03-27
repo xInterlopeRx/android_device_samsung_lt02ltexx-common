@@ -125,6 +125,10 @@ PRODUCT_PACKAGES += consumerir.msm8960
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
 
+# TWRP
+PRODUCT_COPY_FILES += \
+    device/samsung/lt02ltespr/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
+
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb
