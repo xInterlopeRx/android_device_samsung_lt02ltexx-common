@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+#set -e
 
 if [ $# -eq 0 ]; then
   SRC=adb
