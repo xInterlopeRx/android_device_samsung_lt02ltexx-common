@@ -81,47 +81,12 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 QCOM_FM_ENABLED := true
 BOARD_USES_SEPERATED_FM := true
 
+# Camera
+TARGET_NEED_CAMERA_ZSL := true
+TARGET_NEED_FFC_PICTURE_FIXUP := true
+
 # We have new GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
-
-# Camera specific settings
-TARGET_NEED_DISABLE_AUTOFOCUS := true
-TARGET_NEED_DISABLE_FACE_DETECTION_BOTH_CAMERAS := true
-#TARGET_NEED_FFC_PICTURE_FIXUP := true
-TARGET_NEED_PREVIEW_SIZE_FIXUP := true
-#TARGET_ADD_ISO_MODE_1600 := true
-
-# TWRP specific build flags
-BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_15x24.h\"
-DEVICE_RESOLUTION := 1024x600
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-RECOVERY_SDCARD_ON_DATA := true
-TW_HAS_DOWNLOAD_MODE := true
-TW_NO_USB_STORAGE := true
-TWRP_EVENT_LOGGING := false
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-# dual storage definition
-TW_INTERNAL_STORAGE_PATH := "/data/media/0"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun0/file
-TW_INCLUDE_FUSE_EXFAT := true
-
-# Enable SELinux (> Android 4.3)
-HAVE_SELINUX := true
-
-# Brightness
-TW_BRIGHTNESS_PATH := "/sys/devices/platform/mipi2lvds_vx5b3d.1025/lcd/panel/panel/brightness"
-TW_MAX_BRIGHTNESS := 255
-
-#TARGET_USERIMAGES_USE_EXT4 := true # already defined in cm
-TW_INCLUDE_FB2PNG := true
-
-# Prevent greyish screen after screen timeout
-TW_NO_SCREEN_TIMEOUT := true
