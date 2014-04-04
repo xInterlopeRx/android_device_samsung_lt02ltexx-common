@@ -49,7 +49,9 @@ lib/libchromatix_s5k6a3yx_vt_hd.so
 lib/libchromatix_s5k6a3yx_vt.so
 lib/libcordon.so
 lib/libdiag.so
+lib/libdivxdrm.so
 lib/libDivxDrm.so
+lib/libdivxdrmdecrypt.so
 lib/libdrmdecrypt.so
 lib/libdrmfs.so
 lib/libdrmtime.so
