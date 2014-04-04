@@ -21,6 +21,8 @@ etc/firmware/a300_pm4.fw
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
 etc/firmware/vidc_1080p.fw
+lib/drm/libdivxplugin.so
+lib/drm/libdrmwvmplugin.so
 lib/hw/camera.msm8960.so
 lib/hw/sensors.msm8960.so
 lib/libacdbloader.so
