@@ -106,7 +106,7 @@ PRODUCT_PACKAGES += \
     FMRecord
 
 # Torch
-PRODUCT_PACKAGES += Torch
+#PRODUCT_PACKAGES += Torch
 
 # Lights
 PRODUCT_PACKAGES += lights.msm8960
