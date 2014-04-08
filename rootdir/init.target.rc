@@ -277,6 +277,37 @@ on post-fs-data
     chown system radio /sys/class/sensors/light_sensor/vendor
     chown system radio /sys/class/sensors/light_sensor/name
 
+    # Alps sensor
+    chown system system /dev/alps_io
+    chmod 0644 /dev/alps_io
+
+    # Grip_sensor
+    chown system input /sys/class/input/input8/enable
+    chown system input /sys/class/input/input9/enable
+    chown system input /sys/class/input/input10/enable
+
+    chown system radio /sys/class/sensors/grip_sensor/raw_data
+    chown system radio /sys/class/sensors/grip_sensor/vendor
+    chown system radio /sys/class/sensors/grip_sensor/name
+    chown system radio /sys/class/sensors/grip_sensor/onoff
+    chown system radio /sys/class/sensors/grip_sensor/threshold
+    chown system radio /sys/class/sensors/grip_sensor/calibration
+    chown system radio /sys/class/sensors/grip_sensor/offset
+
+    # Grip_sensor (asp01)
+    chown system radio /sys/class/sensors/grip_sensor/reset
+    chown system radio /sys/class/sensors/grip_sensor/erase_cal
+    chown system radio /sys/class/sensors/grip_sensor/cscr_const
+    chown system radio /efs/grip_cal_data
+
+    # Permissions for LED
+    chown system system /sys/class/sec/led/led_r
+    chown system system /sys/class/sec/led/led_g
+    chown system system /sys/class/sec/led/led_b
+    chown system system /sys/class/sec/led/led_pattern
+    chown system system /sys/class/sec/led/led_blink
+    chown system system /sys/class/sec/led/led_lowpower
+
     # Permissions for NCM
     chmod 0660 /sys/class/android_usb/android0/terminal_version
     chown system system /sys/class/android_usb/android0/terminal_version

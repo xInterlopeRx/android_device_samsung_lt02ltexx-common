@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2010-2012, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -12,7 +12,7 @@
 #       with the distribution.
 #     * Neither the name of The Linux Foundation nor the names of its
 #       contributors may be used to endorse or promote products derived
-#      from this software without specific prior written permission.
+#       from this software without specific prior written permission.
 #
 # THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
 # WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -26,15 +26,26 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+#
 
 # No path is set up at this point so we have to do it here.
-PATH=/system/bin:/system/xbin
+PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
 
-MACSOURCE="/efs/wifi/.mac.info"
-MACADDR="/sys/devices/platform/wcnss_wlan.0/wcnss_mac_addr"
+SENSOR_HAL_SYMLINK=/system/lib/hw/sensors.qcom.so
 
-cat $MACSOURCE > $MACADDR
+# symlink already exists, exit
+if [ -h $SENSOR_HAL_SYMLINK ]; then
+	exit 0
+fi
 
-# Run audio init script
-/system/bin/sh /system/etc/init.qcom.audio.sh
+# create symlink to target-specific config file
+platformid=`cat /sys/devices/system/soc/soc0/id`
+case "$platformid" in
+    "116" | "117" | "118" | "119" | "142" | "143" | "144" | "154" | "155" | "156" | "157" | "179" | "180" | "181")
+    ln -s /system/lib/hw/sensors.msm8930.so $SENSOR_HAL_SYMLINK 2>/dev/null
+    ;;
+
+    *)
+    ;;
+esac

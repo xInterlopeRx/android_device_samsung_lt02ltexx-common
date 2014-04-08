@@ -34,7 +34,7 @@ BOARD_KERNEL_BASE            := 0x80200000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
 TARGET_KERNEL_SOURCE         := kernel/samsung/msm8930-common
-TARGET_KERNEL_CONFIG         := cyanogen_lt02ltexx_defconfig
+TARGET_KERNEL_CONFIG         := cyanogen_lt02lte_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -59,9 +59,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/lt02ltexx-common/bluetooth
 
-# NFC
-BOARD_NFC_HAL_SUFFIX := msm8960
-
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true
 
@@ -82,11 +79,15 @@ QCOM_FM_ENABLED := true
 BOARD_USES_SEPERATED_FM := true
 
 # Camera
-TARGET_NEED_CAMERA_ZSL := true
+#TARGET_NEED_CAMERA_ZSL := true
 TARGET_NEED_FFC_PICTURE_FIXUP := true
+TARGET_NEED_DISABLE_AUTOFOCUS:= true
 
 # We have new GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
+
+# PowerHAL
+TARGET_POWERHAL_VARIANT := qcom

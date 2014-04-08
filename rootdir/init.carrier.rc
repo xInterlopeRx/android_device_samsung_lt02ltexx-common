@@ -48,15 +48,24 @@ on boot
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
-    # Sensor - soft iron
-    write /sys/class/input/input5/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
-    write /sys/class/input/input6/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
-    write /sys/class/input/input7/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
+    # Sensor geomagnetic-raw
+	write /sys/class/input/input4/static_matrix "10000 0 0 0 10000 0 0 0 10000"
+#    write /sys/class/input/input5/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
+#    write /sys/class/input/input6/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
+#    write /sys/class/input/input7/static_matrix "9665 -302 -5 -268 10196 146 83 645 10159"
 
     # Enable ellipsoid for dynamic compensation
-    write /sys/class/input/input3/ellipsoid_mode 1
-    write /sys/class/input/input4/ellipsoid_mode 1
-    write /sys/class/input/input5/ellipsoid_mode 1
+#    write /sys/class/input/input3/ellipsoid_mode 1
+    write /sys/class/input/input4/ellipsoid_mode 0
+#    write /sys/class/input/input5/ellipsoid_mode 1
+
+on property:ro.revision=9
+    chmod 0664 /sys/devices/platform/sec-thermistor/temperature
+    chmod 0664 /sys/class/power_supply/battery/siop_level
+    chmod 0664 /sys/class/power_supply/battery/test_charge_current
+    chown radio system /sys/devices/platform/sec-thermistor/temperature
+    chown radio system /sys/class/power_supply/battery/siop_level
+    chown radio system /sys/class/power_supply/battery/test_charge_current
 
     # Define TCP buffer sizes for various networks
     # ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
@@ -72,9 +81,9 @@ on boot
     setprop net.tcp.buffersize.gprs    4096,30000,30000,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
 
-# Assign TCP buffer thresholds to be ceiling value of technology maximums
-# Increased technology maximums should be reflected here.
-    write /proc/sys/net/core/rmem_max  1048576
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  2097152
     write /proc/sys/net/core/wmem_max  2097152
 
     # efs

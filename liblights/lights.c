@@ -43,9 +43,6 @@ char const*const LCD_FILE
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
 
-char const*const NOTIFICATION_FILE
-        = "/sys/class/misc/backlightnotification/notification_led";
-
 /**
  * device methods
  */
@@ -90,18 +87,6 @@ rgb_to_brightness(struct light_state_t const* state)
     int color = state->color & 0x00ffffff;
     return ((77*((color>>16)&0x00ff))
             + (150*((color>>8)&0x00ff)) + (29*(color&0x00ff))) >> 8;
-}
-
-static int
-set_light_notifications(struct light_device_t* dev,
-        struct light_state_t const* state)
-{
-    int err = 0;
-    int on = is_lit(state);
-    pthread_mutex_lock(&g_lock);
-    err = write_int(NOTIFICATION_FILE, on?1:0);
-    pthread_mutex_unlock(&g_lock);
-    return err;
 }
 
 static int
@@ -155,8 +140,6 @@ static int open_lights(const struct hw_module_t* module, char const* name,
         set_light = set_light_backlight;
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name))
         set_light = set_light_buttons;
-    else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
-        set_light = set_light_notifications;
     else
         return -EINVAL;
 
@@ -187,7 +170,7 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .version_major = 1,
     .version_minor = 0,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "S4 Mini Lights Module",
+    .name = "Galaxy Tab 3 Lights Module",
     .author = "The CyanogenMod Project",
     .methods = &lights_module_methods,
 };
