@@ -43,7 +43,7 @@ fi
 platformid=`cat /sys/devices/system/soc/soc0/id`
 case "$platformid" in
     "116" | "117" | "118" | "119" | "142" | "143" | "144" | "154" | "155" | "156" | "157" | "179" | "180" | "181")
-    ln -s /system/lib/hw/sensors.msm8930.so $SENSOR_HAL_SYMLINK 2>/dev/null
+    ln -s /system/lib/hw/sensors.msm8960.so $SENSOR_HAL_SYMLINK 2>/dev/null
     ;;
 
     *)
