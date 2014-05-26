@@ -125,49 +125,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
 
-#common build.props
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    ro.chipname=MSM8930AB \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    persist.radio.add_power_save=1 \
-	persist.radio.no_wait_for_card=1 \
-    persist.radio.apm_sim_not_pwdn=1 \
-    ro.sf.lcd_density=160 \
-    ro.ril.transmitpower=true \
-    ro.warmboot.capability=1 \
-    ro.qualcomm.cabl=0 \
-    ro.opengles.version=196608 \
-    hwui.use_gpu_pixel_buffers=true \
-    af.resampler.quality=255 \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.vr.enable=false \
-    persist.audio.handset.mic=digital \
-    ro.use_data_netmgrd=true \
-    lpa.decode=true \
-    lpa.use-stagefright=true \
-    persist.rild.nitz_plmn="" \
-    persist.rild.nitz_long_ons_0="" \
-    persist.rild.nitz_long_ons_1="" \
-    persist.rild.nitz_long_ons_2="" \
-    persist.rild.nitz_long_ons_3="" \
-    persist.rild.nitz_short_ons_0="" \
-    persist.rild.nitz_short_ons_1="" \
-    persist.rild.nitz_short_ons_2="" \
-    persist.rild.nitz_short_ons_3="" \
-    ril.subscription.types=NV,RUIM \
-    persist.gps.qmienabled=true \
-    persist.gps.qc_nlp_in_use=0 \
-    persist.fuse_sdcard=true \
-    ro.vold.umsdirtyratio=50 \
-    ro.cwm.enable_key_repeat=true \
-    persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0
-
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0
+    ro.secure=0 \
+    ro.adb.secure=0
 
 # call common msm8930
 $(call inherit-product, device/samsung/msm8930-common/msm8930.mk)
