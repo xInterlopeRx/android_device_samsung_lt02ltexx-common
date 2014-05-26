@@ -76,10 +76,6 @@ BOARD_HAVE_DOCK_USBAUDIO := true
 # Allow suspend in charge mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# Enable QCOM FM feature
-QCOM_FM_ENABLED := true
-BOARD_USES_SEPERATED_FM := true
-
 # Camera
 TARGET_NEED_CAMERA_ZSL := true
 TARGET_NEED_FFC_PICTURE_FIXUP := true
